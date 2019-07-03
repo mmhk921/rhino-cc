@@ -1,0 +1,4 @@
+export const SET_SEARCH_LIST = 'SET_SEARCH_LIST';
+export const SET_BREWERY = 'SET_BREWERY';
+export const SEARCH_ERROR = 'SEARCH_ERROR';
+export const BREWERY_ERROR = 'BREWERY_ERROR';
