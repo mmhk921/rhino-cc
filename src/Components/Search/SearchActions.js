@@ -13,7 +13,6 @@ const BREWERY_URL = 'https://api.openbrewerydb.org/breweries/';
 export const searchAllBreweries = ({ query }) => (dispatch) => {
   axios.get(`${SEARCH_URL}${query}`)
     .then((res) => {
-      console.log(res.data);
       dispatch({
         type: SET_SEARCH_LIST,
         payload: res.data
