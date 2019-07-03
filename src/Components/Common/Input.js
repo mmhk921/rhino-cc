@@ -1,5 +1,5 @@
 import React from 'react';
-import { BorderRadius, Colors, MaxWidth } from '../../Config/styles';
+import { BorderRadius, Colors } from '../../Config/styles';
 
 // NOTE: This is modeled after an autocomplete component I use that uses react-places-autocomplete
 const Input = (fieldProps) => {
@@ -16,6 +16,7 @@ const Input = (fieldProps) => {
       alignItems: 'center',
       backgroundColor: Colors.white,
       position: 'relative',
+      display: 'block',
       height: 54,
       borderRadius: options && options.length > 0 ? BorderRadius.small.top : BorderRadius.small.all,
       borderColor: Colors.transparent,
@@ -31,7 +32,7 @@ const Input = (fieldProps) => {
           alignSelf: 'center',
           alignItems: 'center',
           alignContent: 'center',
-          width: MaxWidth.form,
+          width: '100%',
           height: '100%',
           backgroundColor: Colors.white,
           fontSize: 14,
@@ -41,9 +42,9 @@ const Input = (fieldProps) => {
         }}
       />
       {options && options.length > 0 && (
-      <div className="absolute left-0 top-0"
+      <div className="absolute left-0"
         style={{
-          paddingLeft: 10, paddingRight: 5, width: MaxWidth.form, borderWidth: 2, borderRadius: BorderRadius.small.bottom, backgroundColor: Colors.white
+          top: 54, paddingLeft: 10, paddingRight: 5, width: '100%', borderWidth: 2, borderRadius: BorderRadius.small.bottom, backgroundColor: Colors.white
         }}>
         {options.map(option => (
           <div

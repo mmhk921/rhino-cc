@@ -2,7 +2,7 @@
 
 var Colors = {
   // Brand
-  brandPrimary: '#D92D7B',
+  brandPrimary: '#39C171',
   brandSecondary: '#F99A49',
   lightGreyText: '#9b9b9b',
   white: '#ffffff',
@@ -35,8 +35,8 @@ var BorderRadius = {
 
 var MaxWidth = {
   web: 750,
-  mobile: 350,
-  form: 315
+  mobile: 315,
+  form: 536
 }
 var FontFamily = {
   regular: 'Noto Sans',

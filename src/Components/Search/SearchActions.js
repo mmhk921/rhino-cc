@@ -11,6 +11,7 @@ const SEARCH_URL = 'https://api.openbrewerydb.org/breweries/autocomplete?query='
 const BREWERY_URL = 'https://api.openbrewerydb.org/breweries/';
 
 export const searchAllBreweries = ({ query }) => (dispatch) => {
+  dispatch(_clearBrewery());
   axios.get(`${SEARCH_URL}${query}`)
     .then((res) => {
       dispatch({
@@ -27,6 +28,13 @@ const _clearSearch = () => (dispatch) => {
   dispatch({
     type: SET_SEARCH_LIST,
     payload: []
+  });
+};
+
+const _clearBrewery = () => (dispatch) => {
+  dispatch({
+    type: SET_BREWERY,
+    payload: null
   });
 };
 
@@ -47,7 +55,6 @@ const _setBreweryError = error => (dispatch) => {
 export const selectBrewery = ({ id }) => (dispatch) => {
   axios.get(`${BREWERY_URL}${id}`)
     .then((res) => {
-      console.log(res.data);
       dispatch(_clearSearch());
       dispatch({
         type: SET_BREWERY,

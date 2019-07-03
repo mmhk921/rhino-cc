@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import Input from '../Common/Input';
+import { Input } from '../Common';
 import { searchAllBreweries, selectBrewery } from './SearchActions';
+import BreweryCard from './BreweryCard';
+import { MaxWidth } from '../../Config/styles';
 
 class Search extends Component {
   handleSearch = (e) => {
@@ -16,7 +18,7 @@ class Search extends Component {
   }
 
   render() {
-    const { searchSuggestions } = this.props;
+    const { searchSuggestions, selectedBrewery } = this.props;
     return (
       <div style={{ ...styles.hero, backgroundImage: `url("images/hero.jpg")` }}>
         <div style={styles.containerStyle}>
@@ -27,6 +29,12 @@ class Search extends Component {
             options={searchSuggestions}
             handleSelect={this.handleSelect}
             onChange={this.handleSearch} />
+          {selectedBrewery && (
+          <BreweryCard
+            {...selectedBrewery}
+/>
+          )}
+          {}
         </div>
       </div>
     );
@@ -44,14 +52,15 @@ const styles = Object.freeze({
     textAlign: 'center'
   },
   containerStyle: {
-    width: '100%',
     paddingTop: 70,
+    width: '70%',
+    maxWidth: MaxWidth.form,
     textAlign: 'center',
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
-    display: 'flex',
-    flexDirection: 'column'
+    marginLeft: 'auto',
+    marginRight: 'auto'
   },
   textStyle: {
     textAlign: "center",
@@ -60,9 +69,10 @@ const styles = Object.freeze({
 });
 
 const mapStateToProps = ({ SearchReducer }) => {
-  const { searchSuggestions } = SearchReducer;
+  const { searchSuggestions, selectedBrewery } = SearchReducer;
   return {
-    searchSuggestions
+    searchSuggestions,
+    selectedBrewery
   };
 };
 const SearchView = reduxForm({
